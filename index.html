@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Mia, mon amour 🎂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- ===== SPLASH / CLICK TO START ===== -->
+  <div id="splash-screen">
+    <canvas id="splash-canvas"></canvas>
+    <div class="splash-content">
+      <div class="heart-pulse">❤</div>
+      <h1 class="splash-title">For Darling Mia</h1>
+      <p class="splash-sub">A little something special, with all my love</p>
+      <button id="splash-btn" class="glow-btn">Open ✨</button>
+    </div>
+  </div>
+
+  <!-- ===== COUNTDOWN SCREEN ===== -->
+  <div id="countdown-screen" class="hidden">
+    <canvas id="countdown-canvas"></canvas>
+    <div class="countdown-content">
+      <div class="countdown-label">Until Your Special Day</div>
+      <div id="timer" class="timer-display">
+        <span id="t-h">00</span>
+        <span class="t-sep">:</span>
+        <span id="t-m">00</span>
+        <span class="t-sep">:</span>
+        <span id="t-s">00</span>
+      </div>
+      <div class="countdown-sub">Something beautiful is coming…</div>
+      <div class="floating-hearts" id="floating-hearts"></div>
+    </div>
+  </div>
+
+  <!-- ===== CARD OPENING SCREEN ===== -->
+  <div id="card-screen" class="hidden">
+    <canvas id="card-canvas"></canvas>
+    <div class="envelope-wrapper" id="envelope-wrapper">
+      <div class="envelope" id="envelope">
+        <div class="envelope-flap" id="envelope-flap"></div>
+        <div class="envelope-body">
+          <div class="envelope-seal" id="envelope-seal">❤</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LETTER SCREEN ===== -->
+  <div id="letter-screen" class="hidden">
+    <canvas id="letter-canvas"></canvas>
+    <div class="letter-container" id="letter-container">
+      <div class="letter-panel" id="letter-panel">
+        <div class="letter-paper" id="letter-paper">
+          <div class="letter-header">
+            <div class="rose-deco">🌸</div>
+          </div>
+          <div class="letter-body" id="letter-body">
+            <!-- Letter content rendered by JS -->
+          </div>
+          <div class="letter-signature">
+            <span class="sig-text">With all my love ❤</span>
+          </div>
+          <div id="more-btn-wrapper" class="more-btn-wrapper hidden">
+            <button id="more-btn" class="more-btn">Còn bất ngờ nữa đó✨</button>
+          </div>
+        </div>
+      </div>
+      <div class="letter-photo-panel" id="letter-photo-panel">
+        <!-- Photo 1 -->
+        <div class="photo-frame photo-frame-top">
+          <img id="ava-img" src="image/ava.jpg" alt="My love"
+            onerror="this.style.display='none'; document.getElementById('ava-fallback').style.display='flex';" />
+          <div id="ava-fallback" class="ava-fallback">
+            <span class="ava-fallback-icon">📷</span>
+            <span class="ava-fallback-text">Add ava.jpg<br />to /image/</span>
+          </div>
+          <div class="photo-caption">My love ❤</div>
+        </div>
+        <!-- Photo 2 -->
+        <div class="photo-frame photo-frame-bottom">
+          <img src="image/ava1.jpg" alt="My love"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="ava-fallback" style="display:none">
+            <span class="ava-fallback-icon">📷</span>
+            <span class="ava-fallback-text">Add ava1.jpg<br />to /image/</span>
+          </div>
+          <div class="photo-caption">Happy Birthday 🎂</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== GALLERY SCREEN ===== -->
+  <div id="gallery-screen" class="hidden">
+    <canvas id="gallery-canvas"></canvas>
+    <div class="gallery-title-wrapper" id="gallery-title-wrapper">
+      <h2 class="gallery-title">Mia, mon amour 🌸</h2>
+    </div>
+    <div id="gallery-strip" class="gallery-strip">
+      <!-- Images injected by JS -->
+    </div>
+    <div id="gallery-scatter" class="gallery-scatter hidden">
+      <!-- Scattered images injected by JS -->
+    </div>
+    <!-- Gift teaser (appears after scatter) -->
+    <div id="gift-teaser" class="gift-teaser hidden">
+      <p class="gift-teaser-text">À quên, sinh nhật thì phải có quà cho em pé chứ đúng hong nè 🎁</p>
+      <button id="gift-teaser-btn" class="gift-teaser-btn">Chọn quà 🎀</button>
+    </div>
+  </div>
+
+  <!-- ===== GIFT RULES SCREEN ===== -->
+  <div id="gift-rules-screen" class="hidden">
+    <div class="gift-rules-content">
+      <div class="gift-rules-icon">🎁</div>
+      <h2 class="gift-rules-title">Nguyên tắc chọn quà</h2>
+      <ul class="gift-rules-list">
+        <li>🎀 Có tổng cộng <strong>8 hộp quà</strong> dành cho mon amour</li>
+        <li>✨ Em pé có <strong>3 lần chọn</strong> — nếu không thích món đầu, em có thể chọn hộp khác</li>
+        <li>🔒 Hộp đã mở <strong>không thể chọn lại</strong></li>
+        <li>💝 Đến lần thứ 3 thì món quà đó là <strong>bắt buộc</strong> — không còn cơ hội thay đổi nữa nhoa</li>
+      </ul>
+      <button id="gift-rules-btn" class="glow-btn gift-rules-start-btn">Hiểu rồi, cho tui chọn! 🎀</button>
+    </div>
+  </div>
+
+  <!-- ===== GIFT SELECT SCREEN ===== -->
+  <div id="gift-select-screen" class="hidden">
+    <div class="gift-select-header">
+      <h2 class="gift-select-title">Chọn hộp quà của em pé 🎁</h2>
+      <p id="pick-count-label" class="pick-count-label">Bạn còn 3 lần chọn</p>
+    </div>
+    <div id="gift-grid" class="gift-grid">
+      <!-- Gift boxes injected by JS -->
+    </div>
+  </div>
+
+  <!-- ===== GIFT POPUP OVERLAY ===== -->
+  <div id="gift-popup" class="gift-popup hidden">
+    <!-- Content injected by JS -->
+  </div>
+
+  <!-- ===== GIFT CONGRATS SCREEN ===== -->
+  <div id="gift-congrats" class="gift-congrats hidden">
+    <!-- Content injected by JS -->
+  </div>
+
+  <!-- ===== AUDIO ===== -->
+  <audio id="bg-music" loop preload="auto" autoplay muted>
+    <source src="music/bg.mp3" type="audio/mpeg" />
+  </audio>
+  <button id="music-btn" class="music-btn" title="Toggle Music">🔇</button>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="js/particles.js?v=5"></script>
+  <script src="js/countdown.js?v=5"></script>
+  <script src="js/letter.js?v=5"></script>
+  <script src="js/gallery.js?v=5"></script>
+  <script src="js/gifts.js?v=5"></script>
+  <script src="js/main.js?v=5"></script>
+</body>
+
+</html>
