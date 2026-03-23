@@ -109,7 +109,7 @@
 
         // Update remaining count label
         const label = document.getElementById('pick-count-label');
-        if (label) label.textContent = `Bạn còn ${remainingPicks()} lần chọn`;
+        if (label) label.textContent = `Em pé còn ${remainingPicks()} lần chọn`;
     }
 
     // ── BOX CLICK ─────────────────────────────────────────────────────────────
