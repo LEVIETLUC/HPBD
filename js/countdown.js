@@ -3,34 +3,26 @@
     'use strict';
 
     // ── CONFIG ──────────────────────────────────
-    // TEST_MODE = true  → countdown from 5 seconds then trigger (for testing)
-    // TEST_MODE = false → real clock, triggers at exact midnight 00:00:00
-    const TEST_MODE = true;
-    const TEST_SECONDS = 5;
+    // Target: Midnight, March 25, 2026 (Paris Time) -> UTC+1
+    const TARGET_DATE = new Date('2026-03-24T23:00:00Z');
+    const TARGET_MS = TARGET_DATE.getTime();
 
     let intervalId = null;
     let triggered = false;
-    let testRemaining = TEST_SECONDS;
+    let fallbackSeconds = 5;
+    let isFallbackMode = false;
 
     function pad(n) { return String(Math.floor(n)).padStart(2, '0'); }
 
-    function getSecondsUntilMidnight() {
-        const now = new Date();
-        const midnight = new Date(now);
-        midnight.setHours(24, 0, 0, 0);
-        return Math.max(0, Math.floor((midnight - now) / 1000));
-    }
-
-    function updateDisplay(secs) {
-        const h = Math.floor(secs / 3600);
-        const m = Math.floor((secs % 3600) / 60);
-        const s = secs % 60;
+    function updateDisplay(days, hours, minutes, seconds) {
+        const td = document.getElementById('t-d');
         const th = document.getElementById('t-h');
         const tm = document.getElementById('t-m');
         const ts = document.getElementById('t-s');
-        if (th) th.textContent = pad(h);
-        if (tm) tm.textContent = pad(m);
-        if (ts) ts.textContent = pad(s);
+        if (td) td.textContent = pad(days);
+        if (th) th.textContent = pad(hours);
+        if (tm) tm.textContent = pad(minutes);
+        if (ts) ts.textContent = pad(seconds);
     }
 
     function triggerCelebration() {
@@ -45,25 +37,39 @@
     function tick() {
         if (triggered) return;
 
-        if (TEST_MODE) {
-            // Show current remaining seconds, then decrement
-            updateDisplay(testRemaining);
-            if (testRemaining <= 0) {
+        if (isFallbackMode) {
+            updateDisplay(0, 0, 0, fallbackSeconds);
+            if (fallbackSeconds <= 0) {
                 triggerCelebration();
                 return;
             }
-            testRemaining--;
+            fallbackSeconds--;
         } else {
-            const secs = getSecondsUntilMidnight();
-            updateDisplay(secs);
-            if (secs === 0) {
+            const now = Date.now();
+            const diff = Math.floor((TARGET_MS - now) / 1000);
+
+            if (diff <= 0) {
+                updateDisplay(0, 0, 0, 0);
                 triggerCelebration();
+                return;
             }
+
+            const d = Math.floor(diff / 86400);
+            const h = Math.floor((diff % 86400) / 3600);
+            const m = Math.floor((diff % 3600) / 60);
+            const s = diff % 60;
+            
+            updateDisplay(d, h, m, s);
         }
     }
 
     function startCountdown() {
-        // Show initial value immediately, then tick every second
+        const now = Date.now();
+        // If current time is past the target, use 5-second fallback
+        if (now >= TARGET_MS) {
+            isFallbackMode = true;
+        }
+        
         tick();
         intervalId = setInterval(tick, 1000);
     }

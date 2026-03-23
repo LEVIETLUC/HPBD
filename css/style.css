@@ -210,9 +210,9 @@ canvas {
 .timer-display {
   display: flex;
   align-items: center;
-  gap: 0;
+  gap: 4px; /* Small gap between blocks and separators */
   font-family: 'Playfair Display', serif;
-  font-size: clamp(4.5rem, 13vw, 9rem);
+  font-size: clamp(3rem, 10vw, 7rem); /* Slightly smaller to fit 4 blocks nicely */
   font-weight: 700;
   letter-spacing: 0.04em;
   background: linear-gradient(180deg, #fff 0%, var(--pink-soft) 60%, var(--pink) 100%);
@@ -223,11 +223,32 @@ canvas {
   animation: fadeSlideUp 0.8s ease 0.2s both;
 }
 
+.time-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.6rem, 2vw, 0.9rem);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.8); /* Ensures it overrides the transparent gradient fill */
+  margin-top: -5px;
+  filter: none;
+  background: none;
+}
+
 .t-sep {
   animation: blink 1s step-end infinite;
   -webkit-text-fill-color: rgba(255, 180, 180, 0.7);
   padding: 0 4px;
   font-size: 0.85em;
+  transform: translateY(-8px); /* Shift separator up slightly since blocks got taller */
 }
 
 @keyframes blink {
