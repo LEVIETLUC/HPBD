@@ -31,7 +31,7 @@
         },
         {
             id: 6, emoji: '🌙', label: 'Hộp quà 6',
-            text: 'Anh muốn được đồng hành cùng em, anh muốn được chăm sóc em, anh muốn được lo cho em, anh muốn được là chỗ dựa vững chắc nhất cho em. Thế nên Mía cho phép anh cơ hội được thực hiện điều đó nhá.',
+            text: 'Anh muốn được đồng hành cùng em, anh muốn được chăm sóc em, anh muốn được lo cho em, anh muốn được là chỗ dựa vững chắc nhất cho em. Thế nên Mia cho phép anh cơ hội được thực hiện điều đó nhá.',
             images: ['image/oc6.jpg'],
         },
         {

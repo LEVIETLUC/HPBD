@@ -119,7 +119,8 @@
     /** Main entry point. */
     async function initLetter() {
         try {
-            const resp = await fetch(LETTER_PATH);
+            // Add cache-busting parameter
+            const resp = await fetch(`${LETTER_PATH}?v=${Date.now()}`);
             if (!resp.ok) throw new Error(`Cannot load ${LETTER_PATH}`);
             const text = await resp.text();
             const segments = parseLetterText(text);
