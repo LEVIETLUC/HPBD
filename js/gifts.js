@@ -6,7 +6,7 @@
     const GIFTS = [
         {
             id: 1, emoji: '❤️', label: 'Hộp quà 1',
-            text: 'Tặng em pé trái tym của anh, nhờ em chăm sóc và giữ nó giúp anh nhoa. Trái tym tui dễ bị tổn thương lém đóa. Nên Mia phải giữ nó cẩn thận vào nhoa.',
+            text: 'Tặng em pé trái tym của anh, nhờ em chăm sóc và giữ nó giúp anh nhoa. Trái tym tui dễ bị tổn thương lém . Nên Mia phải giữ nó cẩn thận vào nhoa.',
             images: ['image/heart1.png', 'image/heart2.png', 'image/heart3.png'],
         },
         {
@@ -36,12 +36,12 @@
         },
         {
             id: 7, emoji: '😊', label: 'Hộp quà 7',
-            text: 'Tặng cho em pé 1 người iu cute để Mía lúc nào cũng cười cười nói nói mỗi ngày. Nguồn năng lượng tích cực của Phương Anh nè.',
+            text: 'Tặng cho em pé 1 người iu cute để Mia lúc nào cũng cười cười nói nói mỗi ngày. Nguồn năng lượng tích cực của Phương Anh nè.',
             images: ['image/cute1.png', 'image/cute2.png', 'image/cute3.png', 'image/cute4.png'],
         },
         {
             id: 8, emoji: '🤝', label: 'Hộp quà 8',
-            text: 'Rẻ nhất là lời hứa, đắt nhất là niềm tin. Tụi mình làm 1 cuộc giao dịch nghen: Anh lấy thứ rẻ nhất của anh để đổi lấy thứ đắt nhất của anh, em cho anh cơ hội anh sẽ cho em hạnh phúc.',
+            text: 'Rẻ nhất là lời hứa, đắt nhất là niềm tin. Tụi mình làm 1 cuộc giao dịch nghen: Louis lấy thứ rẻ nhất của Louis để đổi lấy thứ đắt nhất của Mia, em cho anh cơ hội anh sẽ cho em hạnh phúc.',
             images: ['image/oc8.jpg'],
         },
     ];
