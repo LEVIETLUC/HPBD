@@ -3,8 +3,9 @@
     'use strict';
 
     // ── CONFIG ──────────────────────────────────
-    // Target: Midnight, March 25, 2026 (Paris Time) -> UTC+1
-    const TARGET_DATE = new Date('2026-03-24T23:00:00Z');
+    // Target: Midnight, March 25, 2026 (Local Timezone of the visitor)
+    // Note: Month is 0-indexed in JS Date Constructor (2 = March)
+    const TARGET_DATE = new Date(2026, 2, 25, 0, 0, 0);
     const TARGET_MS = TARGET_DATE.getTime();
 
     let intervalId = null;
